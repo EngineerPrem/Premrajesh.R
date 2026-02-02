@@ -119,7 +119,7 @@ export default function ContactPage() {
           <Link href="https://github.com/EngineerPrem" target="_blank" className="hover:text-purple-600 dark:hover:text-purple-400 transition">
             <Github size={24} />
           </Link>
-          <Link href="https://www.instagram.com/itsdreamboy304/" target="_blank" className="hover:text-purple-600 dark:hover:text-purple-400 transition">
+          <Link href="https://www.instagram.com/premrajesh_ravichandran/" target="_blank" className="hover:text-purple-600 dark:hover:text-purple-400 transition">
             <Instagram size={24} />
           </Link>
         </div>
