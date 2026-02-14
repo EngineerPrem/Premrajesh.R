@@ -11,7 +11,7 @@ export const ProjectsPage = () => {
   const [showComingSoon, setShowComingSoon] = useState(false);
 
   return (
-    <main className="min-h-[90vh] px-6 py-8 mb-10 text-black dark:text-white">
+    <main className="min-h-[90vh] px-6 py-8 mb-10 text-black dark:text-white" id="project">
       <h2 className="text-4xl font-bold mb-10 text-center text-purple-600">
         My Projects
       </h2>
