@@ -210,7 +210,7 @@ export const ResumeSection = () => {
         {/* CALL TO ACTION */}
         <div className="resume-cta flex flex-wrap justify-center gap-5 pt-10">
           <a
-            href="/Premrajesh Ravichandran.pdf"
+            href="/Premrajesh Resume.pdf"
             download
             className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl shadow transition"
           >
