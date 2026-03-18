@@ -34,7 +34,7 @@ export const certificates = [
     title: "LearnX Internship",
     description: "Full Stack MERN Project: E-Commerce App",
     imageUrl: "/Certificates/LearnX Certficate 2.jpg",
-    viewUrl: "/Certificates/LearnNex-Certificate.pdf",
+    viewUrl: "/Certificates/LearnNex-Intern-Certificate.pdf",
   },
 
   {
