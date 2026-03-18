@@ -19,8 +19,8 @@ export const certificates = [
     year: "2025",
     title: "Round's Edge Internship",
     description: "Internship focused on collaboration and dev skills.",
-    imageUrl: "/Certificates/Round's Edge.jpg",
-    viewUrl: "/Certificates/Round's Edge.pdf",
+    imageUrl: "/Certificates/Rounds-Edge.jpg",
+    viewUrl: "/Certificates/Rounds-Edge.pdf",
   },
   {
     year: "2024",
