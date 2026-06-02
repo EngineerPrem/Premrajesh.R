@@ -95,7 +95,7 @@ export const HeroSection = () => {
         </h1>
 
         <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 max-w-xl mx-auto lg:mx-0">
-          Currently working as a Software Developer at MySoaring, focused on
+          Currently working as a Full Stack AI Developer at MySoaring, focused on
           building clean, scalable, and user-focused applications.
         </p>
 
