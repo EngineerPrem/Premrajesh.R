@@ -22,7 +22,7 @@ export const FooterSection = () => {
       ref={footerRef}
       className="border-t border-zinc-200 dark:border-zinc-800 py-6 text-center text-sm text-zinc-600 dark:text-zinc-400"
     >
-      © {new Date().getFullYear()} Premrajesh Ravichandran · Built with Next.js & Tailwind CSS
+      © {new Date().getFullYear()} Premrajesh Ravichandran · Built with React.js & Material UI
     </footer>
   );
 };
