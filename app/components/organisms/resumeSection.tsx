@@ -174,40 +174,8 @@ export const ResumeSection = () => {
           </h2>
 
           <div className="resume-item space-y-6">
-            <div>
-              <h3 className="font-semibold">Cloud-Based AI Chatbot</h3>
-              <p className="text-zinc-600 dark:text-zinc-400">
-                Developed a web-based chatbot with predefined intelligent
-                responses and a responsive chat interface.
-              </p>
-              <p className="text-xs mt-1">
-                Tech: HTML, CSS, JavaScript, Python (Flask)
-              </p>
-            </div>
 
             <div>
-              <h3 className="font-semibold">Snack Ordering App</h3>
-              <p className="text-zinc-600 dark:text-zinc-400">
-                Built an authentication-based application allowing users to
-                place orders.
-              </p>
-              <p className="text-xs mt-1">Tech: Java, Kotlin, Android Studio</p>
-            </div>
-
-            <div>
-              <h3 className="font-semibold">Portfolio Website</h3>
-              <p className="text-zinc-600 dark:text-zinc-400">
-                Designed and developed a modern portfolio with animations and
-                validation.
-              </p>
-              <p className="text-xs mt-1">
-                Tech: Next.js, Tailwind CSS, GSAP, Zod
-              </p>
-            </div>
-
-            
-
-  <div>
     <h3 className="font-semibold">Soaring Website</h3>
     <p className="text-zinc-600 dark:text-zinc-400">
       Designed and developed a modern, responsive business website with an
@@ -241,6 +209,35 @@ export const ResumeSection = () => {
       Tech: React.js, TypeScript, Node.js, NestJS, MySQL, Material UI
     </p>
   </div>
+            <div>
+              <h3 className="font-semibold">Portfolio Website</h3>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Designed and developed a modern portfolio with animations and
+                validation.
+              </p>
+              <p className="text-xs mt-1">
+                Tech: Next.js, Tailwind CSS, GSAP, Zod
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Cloud-Based AI Chatbot</h3>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Developed a web-based chatbot with predefined intelligent
+                responses and a responsive chat interface.
+              </p>
+              <p className="text-xs mt-1">
+                Tech: HTML, CSS, JavaScript, Python (Flask)
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-semibold">Snack Ordering App</h3>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Built an authentication-based application allowing users to
+                place orders.
+              </p>
+              <p className="text-xs mt-1">Tech: Java, Kotlin, Android Studio</p>
+            </div>
           </div>
         </section>
 
