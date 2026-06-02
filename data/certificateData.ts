@@ -2,6 +2,20 @@
 
 export const certificates = [
   {
+  year: "2026",
+  title: "Best Outgoing Student Award",
+  description: "Recognized for Outstanding Academic Excellence, Leadership, and Overall Contribution",
+  imageUrl: "/Certificates/Best Outgoing Student.jpeg",
+  viewUrl: "/Certificates/Best-Outgoing-Student.pdf",
+},
+{
+  year: "2025",
+  title: "Decoding Data, Designing Destiny",
+  description: "Recognized for Active Participation and Excellence in Data Analytics and Innovation",
+  imageUrl: "/Certificates/Decoding Workshop.jpeg",
+  viewUrl: "/Certificates/Decoding Workshop.pdf",
+},
+  {
     year: "2025",
     title: "Participation in MERN Hackathon",
     description: "Recognized for MERN Innovation",
