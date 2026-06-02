@@ -118,7 +118,7 @@ export const ResumeSection = () => {
 
             <div className="resume-item">
               <h3 className="font-semibold">
-                Junior Software Developer — MySoaring
+                Full Stack AI Developer — MySoaring
               </h3>
               <p className="text-zinc-600 dark:text-zinc-400 mb-3">1 Year</p>
 
@@ -204,6 +204,43 @@ export const ResumeSection = () => {
                 Tech: Next.js, Tailwind CSS, GSAP, Zod
               </p>
             </div>
+
+            
+
+  <div>
+    <h3 className="font-semibold">Soaring Website</h3>
+    <p className="text-zinc-600 dark:text-zinc-400">
+      Designed and developed a modern, responsive business website with an
+      intuitive user interface, optimized performance, and seamless navigation
+      across devices.
+    </p>
+    <p className="text-xs mt-1">
+      Tech: React.js, TypeScript, Material UI, CSS
+    </p>
+  </div>
+
+  <div>
+    <h3 className="font-semibold">Edumee</h3>
+    <p className="text-zinc-600 dark:text-zinc-400">
+      Built an educational management platform that enables students and
+      educators to access learning resources, track progress, and manage
+      academic activities efficiently.
+    </p>
+    <p className="text-xs mt-1">
+      Tech: React.js, TypeScript, Node.js, NestJS, MySQL
+    </p>
+  </div>
+            <div>
+    <h3 className="font-semibold">Sumarg</h3>
+    <p className="text-zinc-600 dark:text-zinc-400">
+      Developed a comprehensive digital platform to streamline organizational
+      operations, manage user activities, and provide an efficient dashboard
+      experience with secure authentication.
+    </p>
+    <p className="text-xs mt-1">
+      Tech: React.js, TypeScript, Node.js, NestJS, MySQL, Material UI
+    </p>
+  </div>
           </div>
         </section>
 
