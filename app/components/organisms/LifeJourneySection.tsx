@@ -50,7 +50,7 @@ export const LifeJourneySection = () => {
                 <p>
                     I entered college filled with confusion. No tech background, no
                     clarity. But I decided to learn steadily. Slowly, I explored Web
-                    Development and Data Analytics, doing small projects and online
+                    Development, doing small projects and online
                     courses.
                 </p>
 
