@@ -13,7 +13,7 @@ export const certificates = [
   title: "Decoding Data, Designing Destiny",
   description: "Recognized for Active Participation and Excellence in Data Analytics and Innovation",
   imageUrl: "/Certificates/Decoding Workshop.jpeg",
-  viewUrl: "/Certificates/Decoding Workshop.pdf",
+  viewUrl: "/Certificates/Decoding-Workshop.pdf",
 },
   {
     year: "2025",
