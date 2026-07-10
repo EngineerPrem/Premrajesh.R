@@ -43,8 +43,8 @@ export const BlogData: BlogDataProp[] = [
   {
     title: "💼 Learning in Production",
     description:
-      "What working as a Software Developer at MySoaring is teaching me every day.",
-    full: "Working as a Software Developer at MySoaring has changed how I see code. It’s no longer just about making things work — it’s about writing clean, maintainable solutions that others can understand and build upon. Every task teaches me something new: how to debug effectively, collaborate with a team, and improve UI with real user needs in mind. I’m learning the value of consistency, communication, and responsibility. This phase is shaping me into a more disciplined and professional developer.",
+      "What working as a Full Stack Developer at MySoaring is teaching me every day.",
+    full: "Working as a Full Stack Developer at MySoaring has changed how I see code. It’s no longer just about making things work — it’s about writing clean, maintainable solutions that others can understand and build upon. Every task teaches me something new: how to debug effectively, collaborate with a team, and improve UI with real user needs in mind. I’m learning the value of consistency, communication, and responsibility. This phase is shaping me into a more disciplined and professional developer.",
   },
 
   {
