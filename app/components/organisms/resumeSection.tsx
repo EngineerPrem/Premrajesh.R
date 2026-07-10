@@ -118,7 +118,7 @@ export const ResumeSection = () => {
 
             <div className="resume-item">
               <h3 className="font-semibold">
-                Full Stack AI Developer — MySoaring
+                Full Stack Developer — MySoaring
               </h3>
               <p className="text-zinc-600 dark:text-zinc-400 mb-3">1 Year</p>
 
@@ -141,7 +141,7 @@ export const ResumeSection = () => {
 
             <ul className="resume-item space-y-4">
               <li>
-                <p className="font-semibold">B.E Computer Science</p>
+                <p className="font-semibold">B.E Computer Science and Engineering</p>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">
                   Park College of Technology — Anna University
                 </p>
