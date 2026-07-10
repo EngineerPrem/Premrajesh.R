@@ -100,7 +100,7 @@ export const AboutTemplate = () => {
             </h2>
             <p className="animate-item text-zinc-700 dark:text-zinc-300 leading-relaxed">
               I am currently working at <strong>MySoaring</strong> as a
-              <strong> Full Stack AI Developer</strong>, contributing to application
+              <strong> Full Stack Developer</strong>, contributing to application
               development, UI improvements, bug fixing, and team collaboration
               in a professional environment.
             </p>
