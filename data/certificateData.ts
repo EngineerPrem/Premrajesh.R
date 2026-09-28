@@ -2,6 +2,13 @@
 
 export const certificates = [
   {
+  year:"2026",
+  title: "One Year Experience - My Soaring",
+  description: "Completed One Year of Professional Experience in Full Stack Development and Software Engineering",
+  imageUrl:"/Certificates/My_Soaring-Experince.jpg",
+  viewUrl:"/Certificates/My_Soaring-Experince.pdf",
+  },
+  {
   year: "2026",
   title: "Best Outgoing Student Award",
   description: "Recognized for Outstanding Academic Excellence, Leadership, and Overall Contribution",
