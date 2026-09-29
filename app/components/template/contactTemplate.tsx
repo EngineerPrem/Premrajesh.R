@@ -180,7 +180,7 @@ export const ContactTemplate = () => {
         className="
                     max-w-4xl
                     mx-auto
-                    p-[2px]
+                    p-2px
 
                     rounded-3xl
 
@@ -387,7 +387,7 @@ export const ContactTemplate = () => {
                   rows={5}
                   className="
                                         w-full
-                                        min-h-[100px]
+                                        min-h-100px
 
                                         rounded-xl
 
@@ -473,7 +473,7 @@ export const ContactTemplate = () => {
                                         justify-center
                                         gap-2
 
-                                        min-w-[190px]
+                                        min-w-190px
                                         h-12
 
                                         rounded-full
@@ -515,10 +515,6 @@ export const ContactTemplate = () => {
               </div>
             </form>
           </div>
-
-          {/* =====================================
-                        RIGHT — CONTACT INFORMATION
-                    ====================================== */}
           {/* =====================================
     RIGHT — CONTACT INFORMATION
 ====================================== */}
