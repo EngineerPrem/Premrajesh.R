@@ -1,316 +1,194 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import ThemeToggle from '@/data/ThemeToggle';
-import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
+import { motion, AnimatePresence, useScroll } from 'framer-motion';
+import ThemeToggle from '@/data/ThemeToggle';
+import { Menu, X, FileDown } from 'lucide-react';
 
 const navItems = [
-  { label: '👨‍💻 About', href: '#about' },
-  { label: '📄 Resume', href: '#resume' },
-  { label: '📁 Projects', href: '#project' },
-  { label: '🧠 Certificates', href: '#certificate' },
-  { label: '📝 Blogs', href: '#blog' },
-  { label: '✉️ Contact', href: '#contact' },
+  { label: 'About', href: '#about' },
+  { label: 'Resume', href: '#resume' },
+  { label: 'Projects', href: '#project' },
+  { label: 'Certificates', href: '#certificate' },
+  { label: 'Blogs', href: '#blog' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export const NavbarSection = () => {
-  const pathname = usePathname();
-
   const [isOpen, setIsOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [activeSection, setActiveSection] = useState('about');
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollYProgress } = useScroll();
 
-  // Scroll direction detection
+  // Scroll detection & active section spy
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      setScrolled(window.scrollY > 20);
 
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        // scrolling down
-        setHidden(true);
-      } else {
-        // scrolling up
-        setHidden(false);
+      const sections = ['about', 'resume', 'project', 'certificate', 'blog', 'contact'];
+      const scrollPosition = window.scrollY + 150;
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
       }
-
-      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   return (
     <>
-      {/* Navbar */}
-      <motion.nav
-        initial={{ y: -80, opacity: 0 }}
-        animate={{
-          y: hidden ? -100 : 0,
-          opacity: hidden ? 0 : 1,
-        }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className="sticky top-0 z-50 flex items-center justify-between px-6 md:px-20 py-4
-        backdrop-blur-md shadow-md border-b
-        bg-blue-400 dark:bg-zinc-900/90
-        border-zinc-200 dark:border-zinc-700"
+      <header
+        className="relative z-30 bg-white/40 dark:bg-zinc-950/40 backdrop-blur-md border-b border-zinc-200/50 dark:border-zinc-800/50 py-4 transition-all duration-300"
       >
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-purple-500 shadow-sm">
-            <Image
-              src="/logo.png"
-              alt="Logo"
-              width={40}
-              height={40}
-              className="object-cover"
-            />
-          </div>
-          <span className="text-xl font-bold text-zinc-900 dark:text-white">
-            Premrajesh Ravichandran
-          </span>
-        </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+          {/* Logo & Name */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-400 group-hover:scale-105 transition-transform duration-300 shadow-sm">
+              <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-zinc-900">
+                <Image
+                  src="/logo.png"
+                  alt="Premrajesh Logo"
+                  width={40}
+                  height={40}
+                  className="object-cover w-full h-full"
+                  priority
+                />
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-base sm:text-lg font-bold tracking-tight text-zinc-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                Premrajesh Ravichandran
+              </span>
+              <span className="text-[11px] font-medium text-purple-600 dark:text-purple-400 -mt-1 hidden sm:inline-block">
+                Full Stack Developer
+              </span>
+            </div>
+          </Link>
 
-        {/* Desktop Navigation */}
-        <div className="flex gap-6 hide-on-small">
-          {navItems.map((item) => (
-            <motion.div
-              key={item.href}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1 glass-card px-3 py-1.5 rounded-full border border-white/50 dark:border-white/10 shadow-sm">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href.replace('#', '');
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-200 ${
+                    isActive
+                      ? 'text-white'
+                      : 'text-zinc-700 dark:text-zinc-300 hover:text-purple-600 dark:hover:text-purple-300'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activePill"
+                      className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full shadow-md shadow-purple-500/25 -z-10"
+                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Right Controls */}
+          <div className="flex items-center gap-3">
+            <a
+              href="/Premrajesh_Resume.pdf"
+              download
+              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-purple-700 dark:text-purple-300 bg-purple-100/80 dark:bg-purple-950/60 border border-purple-300 dark:border-purple-800/80 hover:bg-purple-200/80 dark:hover:bg-purple-900/60 transition-all shadow-sm"
             >
-              <Link
-                href={item.href}
-                className={`relative font-medium px-2 py-1 transition-all ${
-                  pathname === item.href
-                    ? 'text-indigo-600 dark:text-indigo-400'
-                    : 'text-zinc-700 dark:text-zinc-300 hover:text-indigo-500 dark:hover:text-indigo-400'
-                }`}
-              >
-                {item.label}
-                {pathname === item.href && (
-                  <motion.span
-                    layoutId="underline"
-                    className="absolute left-0 bottom-0 h-[2px] w-full bg-indigo-500 dark:bg-indigo-400 rounded"
-                  />
-                )}
-              </Link>
-            </motion.div>
-          ))}
+              <FileDown size={14} />
+              <span>Resume</span>
+            </a>
+
+            <ThemeToggle />
+
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden p-2 rounded-xl text-zinc-700 dark:text-zinc-200 hover:bg-purple-100/50 dark:hover:bg-zinc-800/50 transition-colors"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle Navigation Menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
-        {/* Right Controls */}
-        <div className="flex items-center gap-4">
-          <ThemeToggle />
+        {/* Scroll Progress Bar */}
+        <motion.div
+          className="h-[2px] bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 origin-left"
+          style={{ scaleX: scrollYProgress }}
+        />
+      </header>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="p-2 rounded-md text-zinc-700 dark:text-white show-on-small hide-on-large"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-      </motion.nav>
-
-      {/* Mobile Menu */}
+      {/* Mobile Drawer Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            key="mobileMenu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.25 }}
-            className="show-on-small fixed top-16 left-0 w-full z-40
-            bg-white/80 dark:bg-zinc-900/90 backdrop-blur-md
-            border-b dark:border-zinc-700
-            flex flex-col gap-6 p-6 shadow-lg"
-          >
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className={`text-lg font-semibold ${
-                  pathname === item.href
-                    ? 'text-indigo-600 dark:text-indigo-400'
-                    : 'text-zinc-800 dark:text-zinc-100 hover:text-indigo-500 dark:hover:text-indigo-400'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </motion.div>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden"
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="fixed top-16 left-4 right-4 z-50 lg:hidden glass-panel rounded-2xl p-5 shadow-2xl border border-white/40 dark:border-white/10"
+            >
+              <div className="flex flex-col gap-2">
+                {navItems.map((item) => {
+                  const isActive = activeSection === item.href.replace('#', '');
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`flex items-center justify-between px-4 py-2.5 rounded-xl font-medium text-sm transition-all ${
+                        isActive
+                          ? 'bg-purple-600 text-white font-semibold shadow-md shadow-purple-500/20'
+                          : 'text-zinc-800 dark:text-zinc-200 hover:bg-purple-50 dark:hover:bg-zinc-800/60'
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      {isActive && <span className="text-xs">●</span>}
+                    </Link>
+                  );
+                })}
+
+                <div className="pt-3 mt-2 border-t border-zinc-200/60 dark:border-zinc-800/60 flex items-center justify-between">
+                  <a
+                    href="/Premrajesh_Resume.pdf"
+                    download
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-2 text-sm font-semibold text-purple-600 dark:text-purple-400 py-1"
+                  >
+                    <FileDown size={16} />
+                    <span>Download Resume PDF</span>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-
-      {/* Custom breakpoint CSS */}
-      <style jsx>{`
-        @media (max-width: 1126px) {
-          .hide-on-small {
-            display: none !important;
-          }
-          .show-on-small {
-            display: flex !important;
-          }
-        }
-
-        @media (min-width: 1126px) {
-          .hide-on-large {
-            display: none !important;
-          }
-        }
-      `}</style>
     </>
   );
 };
-
-
-
-
-
-
-
-
-// 'use client';
-
-// import { useState } from 'react';
-// import { usePathname } from 'next/navigation';
-// import Link from 'next/link';
-// import { motion, AnimatePresence } from 'framer-motion';
-// import ThemeToggle from '@/data/ThemeToggle';
-// import { Menu, X } from 'lucide-react';
-// import Image from 'next/image';
-
-// const navItems = [
-//     { label: '👨‍💻 About', href: '#about' },
-//     { label: '📁 Projects', href: '#project' },
-//     { label: '📄 Resume', href: '#resume' },
-//     { label: '✉️ Contact', href: '#contact' },
-//     { label: '📝 Blogs', href: '#blog' },
-//     { label: '🧠 Certificates', href: '#certificate' },
-// ];
-
-// export const NavbarSection = () => {
-//     const pathname = usePathname();
-//     const [isOpen, setIsOpen] = useState(false);
-
-//     return (
-//         <>
-//             <motion.nav
-//                 initial={{ y: -80, opacity: 0 }}
-//                 animate={{ y: 0, opacity: 1 }}
-//                 transition={{ type: 'spring', stiffness: 80, damping: 12 }}
-//                 className="sticky top-0 z-50 flex items-center justify-between px-6 md:px-20 py-4
-//         backdrop-blur-md shadow-md border-b
-//         bg-blue-400 dark:bg-zinc-900/90
-//         border-zinc-200 dark:border-zinc-700
-//         transition-all duration-300"
-//             >
-//                 {/* Logo */}
-//                 <Link href="/" className="flex items-center gap-3">
-//                     <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-purple-500 shadow-sm">
-//                         <Image
-//                             src="/logo.png"
-//                             alt="Logo"
-//                             width={40}
-//                             height={40}
-//                             className="object-cover"
-//                         />
-//                     </div>
-//                     <span className="text-xl font-bold text-zinc-900 dark:text-white">
-//                         Premrajesh Ravichandran
-//                     </span>
-//                 </Link>
-
-//                 {/* Desktop Nav Links */}
-//                 <div className="flex gap-6 hide-on-small">
-//                     {navItems.map((item) => (
-//                         <motion.div key={item.href} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-//                             <Link
-//                                 href={item.href}
-//                                 className={`relative font-medium transition-all px-2 py-1 ${pathname === item.href
-//                                     ? 'text-indigo-600 dark:text-indigo-400'
-//                                     : 'text-zinc-700 dark:text-zinc-300 hover:text-indigo-500 dark:hover:text-indigo-400'
-//                                     }`}
-//                             >
-//                                 {item.label}
-//                                 {pathname === item.href && (
-//                                     <motion.span
-//                                         layoutId="underline"
-//                                         className="absolute left-0 bottom-0 h-[2px] w-full bg-indigo-500 dark:bg-indigo-400 rounded"
-//                                     />
-//                                 )}
-//                             </Link>
-//                         </motion.div>
-//                     ))}
-//                 </div>
-
-//                 {/* Right Controls */}
-//                 <div className="flex items-center gap-4">
-//                     <ThemeToggle />
-
-//                     {/* Hamburger Menu Button */}
-//                     <button
-//                         className="p-2 rounded-md text-zinc-700 dark:text-white show-on-small hide-on-large"
-//                         onClick={() => setIsOpen(!isOpen)}
-//                     >
-//                         {isOpen ? <X size={28} /> : <Menu size={28} />}
-//                     </button>
-//                 </div>
-//             </motion.nav>
-
-//             {/* Mobile Slide Down Menu */}
-//             <AnimatePresence>
-//                 {isOpen && (
-//                     <motion.div
-//                         key="mobileMenu"
-//                         initial={{ opacity: 0, y: -20 }}
-//                         animate={{ opacity: 1, y: 0 }}
-//                         exit={{ opacity: 0, y: -20 }}
-//                         transition={{ duration: 0.25 }}
-//                         className="show-on-small fixed top-16 left-0 w-full bg-white/80 dark:bg-zinc-900/90 backdrop-blur-md border-b dark:border-zinc-700 flex flex-col gap-6 p-6 z-40 shadow-lg"
-//                     >
-//                         {navItems.map((item) => (
-//                             <Link
-//                                 key={item.href}
-//                                 href={item.href}
-//                                 onClick={() => setIsOpen(false)}
-//                                 className={`text-lg font-semibold ${pathname === item.href
-//                                     ? 'text-indigo-600 dark:text-indigo-400'
-//                                     : 'text-zinc-800 dark:text-zinc-100 hover:text-indigo-500 dark:hover:text-indigo-400'
-//                                     }`}
-//                             >
-//                                 {item.label}
-//                             </Link>
-//                         ))}
-//                     </motion.div>
-//                 )}
-//             </AnimatePresence>
-
-//             {/* Custom CSS for 1126px breakpoint */}
-//             <style jsx>{`
-//         @media (max-width: 1126px) {
-//           .hide-on-small {
-//             display: none !important;
-//           }
-//           .show-on-small {
-//             display: flex !important;
-//           }
-//         }
-
-//         @media (min-width: 1126px) {
-//           .hide-on-large {
-//             display: none !important;
-//           }
-//         }
-//       `}</style>
-//         </>
-//     );
-// };
-

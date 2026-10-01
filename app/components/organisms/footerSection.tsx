@@ -1,28 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-
 export const FooterSection = () => {
-  const footerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!footerRef.current) return;
-
-    gsap.from(footerRef.current, {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      ease: 'power2.out',
-    });
-  }, []);
-
   return (
-    <footer
-      ref={footerRef}
-      className="border-t border-zinc-200 dark:border-zinc-800 py-6 text-center text-sm text-zinc-600 dark:text-zinc-400"
-    >
-      © {new Date().getFullYear()} Premrajesh Ravichandran · Built with React.js & Material UI
+    <footer className="border-t border-zinc-200/60 dark:border-zinc-800/60 pt-5 pb-3 text-center text-xs text-zinc-500 dark:text-zinc-400">
+      <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2.5">
+        <p>© {new Date().getFullYear()} <span className="font-semibold text-zinc-800 dark:text-zinc-200">Premrajesh Ravichandran</span>. All rights reserved.</p>
+        <p>Built with Next.js, TypeScript, Tailwind CSS & Framer Motion</p>
+      </div>
     </footer>
   );
 };
