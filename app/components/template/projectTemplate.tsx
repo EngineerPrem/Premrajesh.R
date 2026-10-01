@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ProjectData, ProjectType } from "@/data/projectData";
+import { ProjectData, ProjectType } from "../../../data/projectData";
 import { ProjectSection } from "../organisms/projectSection";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, X, ExternalLink, Github, Layers } from "lucide-react";

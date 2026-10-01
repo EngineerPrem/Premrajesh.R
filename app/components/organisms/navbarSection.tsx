@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence, useScroll } from 'framer-motion';
-import ThemeToggle from '@/data/ThemeToggle';
+import ThemeToggle from '../../../data/ThemeToggle';
 import { Menu, X, FileDown } from 'lucide-react';
 
 const navItems = [

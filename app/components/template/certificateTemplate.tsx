@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { certificates } from "@/data/certificateData";
+import { certificates } from "../../../data/certificateData";
 import { CertificateSection } from "../organisms/certificateSection";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, X, FileText, Award } from "lucide-react";

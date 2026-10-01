@@ -1,6 +1,6 @@
 'use client';
 
-import { BlogData } from "@/data/blogData";
+import { BlogData } from "../../../data/blogData";
 import InfiniteBlogSlider from "./InfiniteBlogSlider";
 
 export const MiniBlogSection = () => {

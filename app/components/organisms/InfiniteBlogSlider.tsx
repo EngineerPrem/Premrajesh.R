@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { BlogDataProp } from "@/data/blogData";
+import { BlogDataProp } from "../../../data/blogData";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, BookOpen, X, Sparkles } from "lucide-react";
 
